@@ -1,9 +1,7 @@
---- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/jojoe77777/FormAPI
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/AID-LEARNING/ libFormAPI
 branches:
 - master
 projects:
-  FormAPI:
-    path: ""
   libFormAPI:
     path: ""
     type: library
