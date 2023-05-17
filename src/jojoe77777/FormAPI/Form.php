@@ -6,6 +6,7 @@ namespace jojoe77777\FormAPI;
 
 use pocketmine\form\Form as IForm;
 use pocketmine\player\Player;
+use ReturnTypeWillChange;
 
 abstract class Form implements IForm{
 
@@ -50,7 +51,11 @@ abstract class Form implements IForm{
     public function processData(&$data) : void {
     }
 
-    public function jsonSerialize(){
+    /**
+     * @return array
+     */
+    public function jsonSerialize(): array
+    {
         return $this->data;
     }
 }
