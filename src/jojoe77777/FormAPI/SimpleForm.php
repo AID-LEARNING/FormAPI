@@ -12,9 +12,9 @@ class SimpleForm extends Form {
     const IMAGE_TYPE_URL = 1;
 
     /** @var string */
-    private $content = "";
+    private string $content = "";
 
-    private $labelMap = [];
+    private array $labelMap = [];
 
     /**
      * @param callable|null $callable
@@ -25,10 +25,11 @@ class SimpleForm extends Form {
         $this->data["title"] = "";
         $this->data["content"] = $this->content;
         $this->data["buttons"] = [];
+        $this->data["elements"] = [];
     }
 
     public function processData(&$data) : void {
-        if($data !== null){
+        if($data !== null) {
             if(!is_int($data)) {
                 throw new FormValidationException("Expected an integer response, got " . gettype($data));
             }
@@ -42,9 +43,11 @@ class SimpleForm extends Form {
 
     /**
      * @param string $title
+     * @return $this
      */
-    public function setTitle(string $title) : void {
+    public function setTitle(string $title) : self {
         $this->data["title"] = $title;
+        return $this;
     }
 
     /**
@@ -63,18 +66,21 @@ class SimpleForm extends Form {
 
     /**
      * @param string $content
+     * @return $this
      */
-    public function setContent(string $content) : void {
+    public function setContent(string $content) : self {
         $this->data["content"] = $content;
+        return $this;
     }
 
     /**
      * @param string $text
      * @param int $imageType
      * @param string $imagePath
-     * @param string $label
+     * @param string|null $label
+     * @return $this
      */
-    public function addButton(string $text, int $imageType = -1, string $imagePath = "", ?string $label = null) : void {
+    public function addButton(string $text, int $imageType = -1, string $imagePath = "", ?string $label = null) : self {
         $content = ["text" => $text];
         if($imageType !== -1) {
             $content["image"]["type"] = $imageType === 0 ? "path" : "url";
@@ -82,6 +88,45 @@ class SimpleForm extends Form {
         }
         $this->data["buttons"][] = $content;
         $this->labelMap[] = $label ?? count($this->labelMap);
+        return $this;
+    }
+
+    /**
+     * @param array $content
+     * @return $this
+     */
+    private function addElements(array $content) : self {
+        $this->data["elements"][] = $content;
+        return $this;
+    }
+
+
+    /**
+     * @param string $text
+     * @param string|null $label
+     * @return $this
+     */
+    public function addLabel(string $text, ?string $label = null) : self {
+        $this->addElements(["type" => "label", "text" => $text]);
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return $this
+     */
+    public function addDivider(string $text) : self {
+        $this->addElements(["type" => "divider", "text" => $text]);
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return $this
+     */
+    public function addHeader(string $text) : self {
+        $this->addElements(["type" => "header", "text" => $text]);
+        return $this;
     }
 
 }
