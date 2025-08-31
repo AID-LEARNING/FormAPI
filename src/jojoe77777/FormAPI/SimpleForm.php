@@ -42,6 +42,9 @@ class SimpleForm extends Form {
     }
 
     public function handleResponse(Player $player, $data) : void {
+        if(!is_numeric($data)) {
+            return;
+        }
         $index = $data;
         $this->processData($data);
         $callable = $this->getCallable();
