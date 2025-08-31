@@ -41,6 +41,15 @@ class SimpleForm extends Form {
         }
     }
 
+    public function handleResponse(Player $player, $data) : void {
+        $index = $data;
+        $this->processData($data);
+        $callable = $this->getCallable();
+        if($callable !== null) {
+            $callable($player, $data, $index);
+        }
+    }
+
     /**
      * @param string $title
      * @return $this
