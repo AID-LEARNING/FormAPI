@@ -2,6 +2,6 @@ name: libFormAPI
 authors:
   - jojoe77777
   - SenseiTarzan
-api: 5.42.0
+api: 5.0.0
 version: 2.1.3
 antigen: jojoe77777\FormAPI
