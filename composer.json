@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "ext-pmmpthread": "*"
+    "ext-pmmpthread": "*",
+    "ext-json": "*"
   },
   "require-dev": {
     "pocketmine/pocketmine-mp": "5.42.0"

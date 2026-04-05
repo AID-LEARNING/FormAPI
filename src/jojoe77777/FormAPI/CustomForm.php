@@ -26,6 +26,7 @@ class CustomForm extends Form {
             throw new FormValidationException("Expected an array response, got " . gettype($data));
         }
         if(is_array($data)) {
+            echo (json_encode($data)) . "\n";
             if(count($data) !== count($this->validationMethods)) {
                 throw new FormValidationException("Expected an array response with the size " . count($this->validationMethods) . ", got " . count($data));
             }
