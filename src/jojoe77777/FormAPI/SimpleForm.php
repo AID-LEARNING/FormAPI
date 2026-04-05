@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace jojoe77777\FormAPI;
 
 use pocketmine\form\FormValidationException;
+use pocketmine\player\Player;
 
 class SimpleForm extends Form {
 

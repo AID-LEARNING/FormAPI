@@ -1,0 +1,20 @@
+{
+  "name": "aid-learning/form-api",
+  "autoload": {
+    "psr-4": {
+      "jojoe77777\\FormAPI\\": "src/jojoe77777/FormAPI"
+    }
+  },
+  "authors": [
+    {
+      "name": "Sensei Tarzan",
+      "email": "gabrielcaptari0@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-pmmpthread": "*"
+  },
+  "require-dev": {
+    "pocketmine/pocketmine-mp": "5.42.0"
+  }
+}
