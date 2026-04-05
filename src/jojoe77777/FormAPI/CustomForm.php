@@ -67,6 +67,7 @@ class CustomForm extends Form {
      */
     public function addLabel(string $text, ?string $label = null) : self {
         $this->addContent(["type" => "label", "text" => $text]);
+        $this->validationMethods[] = static fn($v) => is_null($v);
         return $this;
     }
 
@@ -77,6 +78,7 @@ class CustomForm extends Form {
      */
     public function addDivider(string $text, ?string $label = null) : self {
         $this->addContent(["type" => "divider", "text" => $text]);
+        $this->validationMethods[] = static fn($v) => is_null($v);
         return $this;
     }
 
@@ -87,6 +89,7 @@ class CustomForm extends Form {
      */
     public function addHeader(string $text, ?string $label = null) : self {
         $this->addContent(["type" => "header", "text" => $text]);
+        $this->validationMethods[] = static fn($v) => is_null($v);
         return $this;
     }
 
